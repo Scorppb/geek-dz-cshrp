@@ -17,9 +17,8 @@ int SumDigitOfNumber(int number)
     int result = 0;
     for (int i = 0; number > 0; i++)
     {
-        int temp = number % 10;
+        result = result + number % 10;
         number = number / 10;
-        result = result + temp;
     }
     return result;
 }
@@ -31,7 +30,7 @@ if (number >= 0)
 }
 else
 {
-    int numberMinus=number*(-1);
-    System.Console.WriteLine($"Сумма цифр в числе {number} равна {SumDigitOfNumber(numberMinus)}");
+    int numberOpposite = number * (-1);
+    System.Console.WriteLine($"Сумма цифр в числе {number} равна {SumDigitOfNumber(numberOpposite)}");
 }
 
