@@ -1,4 +1,5 @@
 ﻿// Функция, на вход получает параметр, на выходе введженнео с консоли значение
+
 int Prompt(string message)
 {
     System.Console.Write(message);          // Вывести сообщение
