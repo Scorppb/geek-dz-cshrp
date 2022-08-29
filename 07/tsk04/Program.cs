@@ -35,19 +35,38 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-void FindAverage(int[,] matrix)
+int FindMaxAndSumInLine(int[,] matrix)
 {
+    int sumMax = 0;
+    int maxIndex = 0;
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            if (j == 0 || maxIndex < matrix[i, j]) maxIndex = matrix[i, j];
+        }
+        sumMax = sumMax + maxIndex;
+    }
+    Console.WriteLine($"Сумма максимумов строк = {sumMax}");
+    return sumMax;
+}
+
+int FindMinAndSumInColumns(int[,] matrix)
+{
+    int sumMin = 0;
+    int minIndex = 0;
     for (int j = 0; j < matrix.GetLength(1); j++)
     {
-        double sum = 0;
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
-            sum += matrix[i, j];
+            if (i == 0 || minIndex > matrix[i, j]) minIndex = matrix[i, j];
         }
-        double average = sum / matrix.GetLength(0);
-        Console.Write($"{Math.Round(average, 2)}\t");
+        sumMin = sumMin + minIndex;
     }
+    Console.WriteLine($"Сумма минимумов столбцов = {sumMin}");
+    return sumMin;
 }
+
 
 int line = Prompt("Введите количество строк> ");
 int columns = Prompt("Введите количество столбцов> ");
@@ -58,6 +77,7 @@ else
     int max = Prompt("Ведите максимальное допустимое значение> ");
     int[,] matrix = GenMatrix(line, columns, min, max);
     PrintMatrix(matrix);
-    Console.WriteLine($"Количество столбцов: {matrix.GetLength(0)}, среднее арифметическое элементов: ");
-    FindAverage(matrix);
+    System.Console.WriteLine();
+    int difference = FindMaxAndSumInLine(matrix) - FindMinAndSumInColumns(matrix);
+    System.Console.WriteLine($"Разница сумм = {difference}");
 }
