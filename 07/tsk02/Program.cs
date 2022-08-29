@@ -44,17 +44,21 @@ void PrintMatrix(int[,] matrix)
 
 int line = Prompt("Введите количество строк> ");
 int columns = Prompt("Введите количество столбцов> ");
-int min = Prompt("Ведите минимальное допустимое значение> ");
-int max = Prompt("Ведите максимальное допустимое значение> ");
-int[,] matrix = GenMatrix(line, columns, min, max);
-PrintMatrix(matrix);
-int posLine = Prompt("Ведите строку для нахожденя элемента> ");
-int posСolumn = Prompt("Ведите столбец для нахожденя элемента> ");
-if (posLine < 0 | posLine - 1 > line | posСolumn < 0 | posСolumn - 1 > columns)
-{
-    Console.WriteLine("Элемент не существует");
-}
+if (line <= 0 || columns <= 0) System.Console.WriteLine("Введите число больше 0");
 else
 {
-    Console.WriteLine($"Значение элемента [{posLine},{posСolumn}] массива = {matrix[posLine - 1, posСolumn - 1]}");
+    int min = Prompt("Ведите минимальное допустимое значение> ");
+    int max = Prompt("Ведите максимальное допустимое значение> ");
+    int[,] matrix = GenMatrix(line, columns, min, max);
+    PrintMatrix(matrix);
+    int posLine = Prompt("Ведите строку для нахожденя элемента> ");
+    int posСolumn = Prompt("Ведите столбец для нахожденя элемента> ");
+    if (posLine <= 0 | posLine - 1 > line | posСolumn <= 0 | posСolumn - 1 > columns)
+    {
+        Console.WriteLine("Элемент не существует");
+    }
+    else
+    {
+        Console.WriteLine($"Значение элемента [{posLine},{posСolumn}] массива = {matrix[posLine - 1, posСolumn - 1]}");
+    }
 }

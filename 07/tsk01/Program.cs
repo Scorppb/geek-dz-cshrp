@@ -20,7 +20,7 @@ double[,] GenMatrix(int line, int columns)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(-100, 100)*0.1;
+            matrix[i, j] = new Random().Next(-100, 100) * 0.1;
         }
     }
     return matrix;
@@ -40,4 +40,8 @@ void PrintMatrix(double[,] matrix)
 
 int line = Prompt("Введите количество строк> ");
 int columns = Prompt("Введите количество столбцов> ");
-PrintMatrix(GenMatrix(line, columns));
+if (line <= 0 || columns <= 0) System.Console.WriteLine("Введите число больше 0");
+else
+{
+    PrintMatrix(GenMatrix(line, columns));
+}
