@@ -15,9 +15,9 @@ int Prompt(string massage)
     return result;
 }
 
-int[,] GenMatrix(int line, int columns, int min, int max)
+int[,] GenMatrix(int rows, int columns, int min = -10, int max = 10)
 {
-    int[,] matrix = new int[line, columns];
+    int[,] matrix = new int[rows, columns];
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
@@ -41,24 +41,32 @@ void PrintMatrix(int[,] matrix)
     System.Console.WriteLine();
 }
 
-
-int line = Prompt("Введите количество строк> ");
-int columns = Prompt("Введите количество столбцов> ");
-if (line <= 0 || columns <= 0) System.Console.WriteLine("Введите число больше 0");
-else
+void Main(int rows, int columns, int positionRows, int positionСolumns, int[,] matrix)
 {
-    int min = Prompt("Ведите минимальное допустимое значение> ");
-    int max = Prompt("Ведите максимальное допустимое значение> ");
-    int[,] matrix = GenMatrix(line, columns, min, max);
-    PrintMatrix(matrix);
-    int posLine = Prompt("Ведите строку для нахожденя элемента> ");
-    int posСolumn = Prompt("Ведите столбец для нахожденя элемента> ");
-    if (posLine <= 0 | posLine - 1 > line | posСolumn <= 0 | posСolumn - 1 > columns)
+    if (positionRows <= 0 |
+           positionRows - 1 > rows |
+           positionСolumns <= 0 |
+           positionСolumns - 1 > columns)
     {
         Console.WriteLine("Элемент не существует");
     }
     else
     {
-        Console.WriteLine($"Значение элемента [{posLine},{posСolumn}] массива = {matrix[posLine - 1, posСolumn - 1]}");
+        Console.WriteLine($"Значение элемента [{positionRows},{positionСolumns}] массива = {matrix[positionRows - 1, positionСolumns - 1]}");
     }
 }
+
+int rows = Prompt("Введите количество строк> ");
+int columns = Prompt("Введите количество столбцов> ");
+if (rows <= 0 || columns <= 0) System.Console.WriteLine("Введите число больше 0");
+else
+{
+    int min = Prompt("Ведите минимальное допустимое значение> ");
+    int max = Prompt("Ведите максимальное допустимое значение> ");
+    int[,] matrix = GenMatrix(rows, columns, min, max);
+    PrintMatrix(matrix);
+    int positionRows = Prompt("Ведите строку для нахожденя элемента> ");
+    int positionСolumns = Prompt("Ведите столбец для нахожденя элемента> ");
+    Main(rows, columns, positionRows, positionСolumns, matrix);
+}
+

@@ -35,7 +35,7 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int FindMaxAndSumInLine(int[,] matrix)
+int FindMaxAndSumInRows(int[,] matrix)
 {
     int sumMax = 0;
     int maxIndex = 0;
@@ -78,6 +78,6 @@ else
     int[,] matrix = GenMatrix(line, columns, min, max);
     PrintMatrix(matrix);
     System.Console.WriteLine();
-    int difference = FindMaxAndSumInLine(matrix) - FindMinAndSumInColumns(matrix);
+    int difference = FindMaxAndSumInRows(matrix) - FindMinAndSumInColumns(matrix);
     System.Console.WriteLine($"Разница сумм = {difference}");
 }
