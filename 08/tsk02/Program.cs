@@ -7,13 +7,7 @@
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
 
-int Prompt(string massage)
-{
-    System.Console.Write(massage);
-    string readValue = Console.ReadLine();
-    int result = int.Parse(readValue);
-    return result;
-}
+
 
 int[,] FillMatrix(int line, int columns)
 {
@@ -66,8 +60,6 @@ int columns = Prompt("Введите количество столбцов> ");
 if (rows <= 0 || columns <= 0) System.Console.WriteLine("Введите число больше 0");
 else
 {
-    // int min = Prompt("Ведите минимальное допустимое значение> ");
-    // int max = Prompt("Ведите максимальное допустимое значение> ");
     int[,] matrix = FillMatrix(rows, columns);
     PrintMatrix(matrix);
     System.Console.WriteLine($" ");

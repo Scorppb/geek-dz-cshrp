@@ -17,14 +17,14 @@ int Prompt(string massage)
     return result;
 }
 
-int[,] GenMatrix(int line, int columns, int min, int max)
+int[,] GenMatrix(int line, int columns)
 {
     int[,] matrix = new int[line, columns];
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(min, max);
+            matrix[i, j] = new Random().Next(1, 9);
         }
     }
     return matrix;
@@ -68,9 +68,7 @@ int columns = Prompt("Введите количество столбцов> ");
 if (line <= 0 || columns <= 0) System.Console.WriteLine("Введите число больше 0");
 else
 {
-    int min = Prompt("Ведите минимальное допустимое значение> ");
-    int max = Prompt("Ведите максимальное допустимое значение> ");
-    int[,] matrix = GenMatrix(line, columns, min, max);
+    int[,] matrix = GenMatrix(line, columns);
     PrintMatrix(matrix);
     System.Console.WriteLine("В итоге получается вот такой массив: ");
     int[,] newMatrix = BubbleSortRows(matrix);
