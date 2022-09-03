@@ -42,7 +42,25 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-
+int[,] BubbleSortRows(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int k = 0; k < matrix.GetLength(1) - 1; k++)
+        {
+            for (int j = 0; j < matrix.GetLength(1) - 1 - k; j++)
+            {
+                if (matrix[i, j] < matrix[i, j + 1])
+                {
+                    int temp = matrix[i, j];
+                    matrix[i, j] = matrix[i, j + 1];
+                    matrix[i, j + 1] = temp;
+                }
+            }
+        }
+    }
+    return matrix;
+}
 
 
 int line = Prompt("Введите количество строк> ");
@@ -54,6 +72,7 @@ else
     int max = Prompt("Ведите максимальное допустимое значение> ");
     int[,] matrix = GenMatrix(line, columns, min, max);
     PrintMatrix(matrix);
-    System.Console.WriteLine();
-
+    System.Console.WriteLine("В итоге получается вот такой массив: ");
+    int[,] newMatrix = BubbleSortRows(matrix);
+    PrintMatrix(newMatrix);
 }
