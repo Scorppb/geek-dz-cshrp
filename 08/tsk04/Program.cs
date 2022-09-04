@@ -99,7 +99,7 @@ void PrintMatrix(int[,] matrix)
 }
 
 
-int nummer = Prompt("Введите количество строк и столбцов> ");
-int[,] matrix = FillSpiralMatrix(nummer);
+int number = Prompt("Введите количество строк и столбцов> ");
+int[,] matrix = FillSpiralMatrix(number);
 PrintMatrix(matrix);
 

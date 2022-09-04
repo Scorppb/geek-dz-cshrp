@@ -39,7 +39,7 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int[,] multiplicationMatrix(int[,] matrix1, int[,] matrix2)
+int[,] MultiplicationMatrix(int[,] matrix1, int[,] matrix2)
 {
     int[,] matrix3 = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
     for (int i = 0; i < matrix3.GetLength(0); i++)
@@ -68,6 +68,6 @@ else
     int[,] matrix2 = FillMatrix(rows, columns);
     PrintMatrix(matrix2);
     System.Console.WriteLine($" ");
-    int[,] result = multiplicationMatrix(matrix1, matrix2);
+    int[,] result = MultiplicationMatrix(matrix1, matrix2);
     PrintMatrix(result);
 }
