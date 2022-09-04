@@ -10,10 +10,19 @@ int Prompt(string massage)
 }
 
 
-int FindSum(int m, int n)
+int FindSum(int min, int max)
 {
-    return m > n ? 0 : FindSum(m + 1, n) + m;
+    return min > max ? 0 : FindSum(min + 1, max) + min;
 }
 
-int sum = FindSum(Prompt("Введите число M > "), Prompt("Введите число N > "));
+int min = Prompt("Введите минимальное число> ");
+int max = Prompt("Введите максимальное число> ");
+if (min > max)
+{
+    System.Console.WriteLine("Введите корректные данные");
+    return;
+}
+int sum = FindSum(min, max);
 System.Console.WriteLine($"Cумма элементов в промежутке от M до N равна {sum}");
+
+
