@@ -14,18 +14,77 @@ int Prompt(string massage)
     return result;
 }
 
-int[,] FillMatrix(int line, int columns)
+int[,] CreateSquareArray(int number)
 {
-    int[,] matrix = new int[line, columns];
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    int[,] matrix = new int[number, number];
+    int matrixMount = number * number;
+    int row = 1;
+    int column = 1;
+    int count = 1;
+
+    for (int i = 0; i < number; i++)
     {
-        for (int j = 0; j < matrix.GetLength(1); j++)
+        matrix[0, i] = count;
+        count++;
+    }
+    for (int i = 1; i < number; i++)
+    {
+        matrix[i, number - 1] = count;
+        count++;
+    }
+    for (int i = number - 2; i >= 0; i--)
+    {
+        matrix[number - 1, i] = count;
+        count++;
+    }
+    for (int i = number - 2; i > 0; i--)
+    {
+        matrix[i, 0] = count;
+        count++;
+        if (count == matrixMount)
         {
-            matrix[i, j] = new Random().Next(1, 9);
+            matrix[row, column] = count;
         }
+    }
+
+    while (count < matrixMount)
+    {
+        while (matrix[row, column + 1] == 0)
+        {
+            matrix[row, column] = count;
+            count++;
+            column++;
+        }
+
+        while (matrix[row + 1, column] == 0)
+        {
+            matrix[row, column] = count;
+            count++;
+            row++;
+        }
+
+        while (matrix[row, column - 1] == 0)
+        {
+            matrix[row, column] = count;
+            count++;
+            column--;
+        }
+
+        while (matrix[row - 1, column] == 0)
+        {
+            matrix[row, column] = count;
+            count++;
+            row--;
+        }
+        if (count == matrixMount)
+        {
+            matrix[row, column] = count;
+        }
+
     }
     return matrix;
 }
+
 
 void PrintMatrix(int[,] matrix)
 {
@@ -40,14 +99,7 @@ void PrintMatrix(int[,] matrix)
 }
 
 
+int nummer = Prompt("Введите количество строк и столбцов> ");
+int[,] matrix = CreateSquareArray(nummer);
+PrintMatrix(matrix);
 
-int rows = Prompt("Введите количество строк> ");
-int columns = Prompt("Введите количество столбцов> ");
-if (rows <= 0 || columns <= 0) System.Console.WriteLine("Введите число больше 0");
-else
-{
-    int[,] matrix1 = FillMatrix(rows, columns);
-    PrintMatrix(matrix1);
-    System.Console.WriteLine($" ");
-    
-}
