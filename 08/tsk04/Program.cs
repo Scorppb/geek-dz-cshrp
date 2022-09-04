@@ -14,7 +14,7 @@ int Prompt(string massage)
     return result;
 }
 
-int[,] CreateSquareArray(int number)
+int[,] FillSpiralMatrix(int number)
 {
     int[,] matrix = new int[number, number];
     int matrixMount = number * number;
@@ -100,6 +100,6 @@ void PrintMatrix(int[,] matrix)
 
 
 int nummer = Prompt("Введите количество строк и столбцов> ");
-int[,] matrix = CreateSquareArray(nummer);
+int[,] matrix = FillSpiralMatrix(nummer);
 PrintMatrix(matrix);
 
